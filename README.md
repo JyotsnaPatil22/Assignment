@@ -1,6 +1,15 @@
 # Assignment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+# Getting Started
+It's easy to get started with GitHub Pull Requests for Visual Studio Code. Simply follow these steps to get started.
+
+Install the extension from within VS Code or download it from the marketplace.
+Open your desired GitHub repository in VS Code.
+A new viewlet will appear on the activity bar which shows a list of pull requests and issues.
+Use the button on the viewlet to sign in to GitHub.
+You may need to configure the githubPullRequests.remotes setting, by default the extension will look for PRs for origin and upstream. If you have different remotes, add them to the remotes list.
+You should be good to go!
 
 ## Development server
 
