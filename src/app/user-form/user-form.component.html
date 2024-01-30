@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="body">
+      <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>User Form</span>
+        <span class="fill-remaining-space"></span>
+      </mat-toolbar>
+      <form #form="ngForm">
+        <div class="row">
+
+          <div class="col-md-12 feilds form-group">
+            <label>Name</label>
+            <input type="text" required #uname="ngModel" [(ngModel)]="iUser.User_Name" class="form-control"
+              name="User_Name" placeholder="Enter Name">
+            <div class="text-danger" *ngIf="uname.touched">
+              <span *ngIf="uname.errors?.['required']">*Required</span>
+            </div>
+          </div>
+
+          <div class="col-md-12 feilds form-group">
+            <label>Email</label>
+            <input type="email" email required #uemail="ngModel" [(ngModel)]="iUser.User_Email" class="form-control"
+              name="User_Email" placeholder="Enter Email">
+            <div class="text-danger" *ngIf="uemail.touched">
+              <span *ngIf="uemail.errors?.['required']">*Required</span>
+              <span *ngIf="uemail.errors?.['email']">This is not a valid Email!</span>
+            </div>
+          </div>
+
+          <div class="col-md-12 feilds form-group">
+            <label>Role</label>
+            <select class="form-select" select #urole="ngModel" [(ngModel)]="iUser.User_Role" class="form-control"
+              name="User_Role">
+              <option>Admin</option>
+              <option>User</option>
+            </select>
+            <div *ngIf="urole.touched">
+            </div>
+          </div>
+          <div class="btnGrp">
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid"
+              (click)="saveUserData()">Submit</button>
+
+            <button mat-raised-button color="warn" type="Reset" (click)="onClear()">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-8 listCol">
+    <div id="header">
+      <label>Search By </label>
+      <select class="searchFields" [(ngModel)]="sortBy">
+        <option value="Name">Name</option>
+        <option value="Email"> Email</option>
+      </select>
+      <input type="text" class="searchFields" placeholder="search User" [(ngModel)]="searchTxt"
+        (ngModelChange)="searchFun()">
+
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Sr No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngIf="IUserArr.length!=0">
+          <tr *ngFor="let user of IUserArr | paginate:{itemsPerPage:itemsPerPage, currentPage:page}; let i=index" >
+            <th scope="row">{{(page - 1) * itemsPerPage + i + 1 }}</th>
+            <td>{{user.User_Name}}</td>
+            <td>{{user.User_Email}}</td>
+            <td>{{user.User_Role}}</td>
+            <td><button mat-raised-button color="primary" (click)="onEdit(user)" type="submit">Edit</button></td>
+            <td> <button mat-raised-button color="warn" type="Delete" (click)="onDelete(user)">Delete</button></td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf="IUserArr.length==0">
+          <tr>
+            <td colspan="8" class="text-center">No Record Peresent</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+
+    <div>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

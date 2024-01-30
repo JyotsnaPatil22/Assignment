@@ -1,0 +1,50 @@
+
+.fill-remaining-space {
+    flex: auto;
+}
+
+mat-toolbar {
+    background-color: rgb(211, 211, 215);
+    margin-bottom: 30px;
+}
+
+mat-form-field {
+    padding: 10px;
+}
+
+.select {
+    padding-bottom: 12px;
+}
+
+.btnGrp {
+    align-items: center;
+    margin: auto;
+    width: 200px;
+}
+
+.mat-raised-button {
+    margin: 5px;
+    ;
+}
+
+#header {
+    width: 350px;
+    display: block;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feilds {
+    margin: 10px;
+
+}
+
+.body {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.listCol {
+    border: 1px solid black;
+}

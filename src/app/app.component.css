@@ -1,0 +1,17 @@
+
+.container{
+margin: 2px;
+border: 1px solid black;
+}
+.docs-navbar-header{
+    background-color: rgb(220, 156, 232);
+ 
+    height: 50px;
+   padding: 10px;
+   margin-bottom: 20px;
+}
+.docs-navbar-header a{
+    margin: 20px;
+    text-decoration: none;
+    font-size: larger;
+}
